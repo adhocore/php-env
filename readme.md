@@ -1,4 +1,4 @@
-## adhcore/env [![build status](https://travis-ci.org/adhocore/env.svg?branch=master)](https://travis-ci.org/adhocore/env)
+## adhocore/env [![build status](https://travis-ci.org/adhocore/env.svg?branch=master)](https://travis-ci.org/adhocore/env)
 
 - Environment variable loader and retriever for PHP.
 - Sanitization/Filters can be applied on retrieval if `filter` extension is loaded.
