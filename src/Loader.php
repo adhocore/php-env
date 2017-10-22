@@ -70,6 +70,29 @@ class Loader
      */
     protected function setEnv(array $vars, $override, $mode)
     {
+        if ($mode < self::PUTENV || $mode > self::ALL) {
+            $mode = self::PUTENV;
+        }
 
+        $default = microtime(1);
+
+        foreach ($vars as $key => $value) {
+            // Skip if we already have value and cant override.
+            if (!$override && $default !== Retriever::getEnv($key, $default)) {
+                continue;
+            }
+
+            if ($mode & self::ENV) {
+                $_ENV[$key] = $value;
+            }
+
+            if ($mode & self::PUTENV) {
+                \putenv("$key=$value");
+            }
+
+            if ($mode & self::SERVER) {
+                $_SERVER[$key] = $value;
+            }
+        }
     }
 }
