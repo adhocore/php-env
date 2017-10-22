@@ -1,0 +1,34 @@
+{
+    "name": "adhocore/env",
+    "description": "Environment variable loader and retriever for PHP",
+    "type": "library",
+    "keywords": [
+        "env", "env-php", "env-loader"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jitendra Adhikari",
+            "email": "jiten.adhikary@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Ahc\\Env\\": "src/"
+        },
+        "files": [
+            "src/functions.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Ahc\\Env\\Test\\": "tests/"
+        }
+    },
+    "require": {
+        "php": ">=5.4"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.7.0"
+    }
+}
