@@ -49,10 +49,13 @@ class Loader
             throw new \InvalidArgumentException('The .env file does not exist or is not readable');
         }
 
+
         // Get file contents, fix the comments, quote the values and parse as ini.
         $content = \preg_replace('/^\s*#/m', ';', \file_get_contents($file));
         $content = \preg_replace('/=([^"\r?\n].*)$/Um', '="$1"', $content);
-        $parsed  = \parse_ini_string($content, false, \INI_SCANNER_TYPED);
+
+        $flag    = defined('INI_SCANNER_TYPED') ? \INI_SCANNER_TYPED : \INI_SCANNER_NORMAL;
+        $parsed  = \parse_ini_string($content, false, $flag);
 
         if ($parsed === false) {
             throw new \RuntimeException('The .env file cannot be parsed due to malformed values');
