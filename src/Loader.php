@@ -49,7 +49,6 @@ class Loader
             throw new \InvalidArgumentException('The .env file does not exist or is not readable');
         }
 
-
         // Get file contents, fix the comments, quote the values and parse as ini.
         $content = \preg_replace('/^\s*#/m', ';', \file_get_contents($file));
         $content = \preg_replace('/=([^"\r?\n].*)$/Um', '="$1"', $content);
