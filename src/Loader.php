@@ -49,12 +49,9 @@ class Loader
             throw new \InvalidArgumentException('The .env file does not exist or is not readable');
         }
 
-        // Get file contents, fix the comments, quote the values and parse as ini.
+        // Get file contents, fix the comments and parse as ini.
         $content = \preg_replace('/^\s*#/m', ';', \file_get_contents($file));
-        $content = \preg_replace('/=([^"\r?\n].*)$/Um', '="$1"', $content);
-
-        $flag    = defined('INI_SCANNER_TYPED') ? \INI_SCANNER_TYPED : \INI_SCANNER_NORMAL;
-        $parsed  = \parse_ini_string($content, false, $flag);
+        $parsed  = \parse_ini_string($content, false, INI_SCANNER_RAW);
 
         if ($parsed === false) {
             throw new \RuntimeException('The .env file cannot be parsed due to malformed values');
@@ -80,10 +77,23 @@ class Loader
                 continue;
             }
 
+            $value = $this->resolveRef($value);
+
             $this->toEnv($key, $value, $mode);
             $this->toServer($key, $value, $mode);
             $this->toPutenv($key, $value, $mode);
         }
+    }
+
+    protected function resolveRef($value)
+    {
+        if (!$value || \strpos($value, '${') === false) {
+            return $value;
+        }
+
+        return \preg_replace_callback('~\$\{(\w+)\}~', function ($m) {
+            return (null === $ref = Retriever::getEnv($m[1], null)) ? $m[0] : $ref;
+        }, $value);
     }
 
     private function toEnv($key, $value, $mode)
