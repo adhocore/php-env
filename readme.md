@@ -41,6 +41,27 @@ use Ahc\Env\Loader;
 
 > Always wrap complex values within double quotes in `.env` file. Eg: `APP_KEY="K&^¢*&D(?<µ}^(P\]X"`
 
+### ENV Format
+
+Supports `#` or `;` comments and multilines. Literal double quote should be escaped like `\"`. See more examples below:
+
+```
+# comment line
+a=1
+b="2"
+c=$3#
+; also comment line
+d="lol"
+e=
+f=\"6\"
+1_2=one_two
+E=""
+A_B=Apple Ball
+MUL="line 1
+line 2"
+x=Y
+```
+
 ### Retrieving
 
 ```php
