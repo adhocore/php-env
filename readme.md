@@ -59,6 +59,7 @@ echo env('THE_KEY');
 
 See [filter_var](http://php.net/filter_var) for more on sanitizing/filtering values!
 
+---
 ### Consideration
 
 By default this library only loads env to `putenv()`.
