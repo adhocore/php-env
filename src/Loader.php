@@ -70,13 +70,9 @@ class Loader
      * @param bool  $override
      * @param int   $mode
      */
-    protected function setEnv(array $vars, $override, $mode)
+    protected function setEnv(array $vars, $override, $mode = self::PUTENV)
     {
-        if ($mode < self::PUTENV || $mode > self::ALL) {
-            $mode = self::PUTENV;
-        }
-
-        $default = microtime(1);
+        $default = \microtime(1);
 
         foreach ($vars as $key => $value) {
             // Skip if we already have value and cant override.
@@ -84,17 +80,30 @@ class Loader
                 continue;
             }
 
-            if ($mode & self::ENV) {
-                $_ENV[$key] = $value;
-            }
+            $this->toEnv($key, $value, $mode);
+            $this->toServer($key, $value, $mode);
+            $this->toPutenv($key, $value, $mode);
+        }
+    }
 
-            if ($mode & self::PUTENV) {
-                \putenv("$key=$value");
-            }
+    private function toEnv($key, $value, $mode)
+    {
+        if ($mode & self::ENV) {
+            $_ENV[$key] = $value;
+        }
+    }
 
-            if ($mode & self::SERVER) {
-                $_SERVER[$key] = $value;
-            }
+    private function toServer($key, $value, $mode)
+    {
+        if ($mode & self::SERVER) {
+            $_SERVER[$key] = $value;
+        }
+    }
+
+    private function toPutenv($key, $value, $mode)
+    {
+        if ($mode & self::PUTENV) {
+            \putenv("$key=$value");
         }
     }
 }
