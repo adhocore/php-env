@@ -24,15 +24,24 @@ class Retriever
      */
     public static function getEnv($key, $default = null, $filter = null, $options = null)
     {
-        if (isset($_SERVER[$key])) {
-            $env = $_SERVER[$key];
-        } elseif (isset($_ENV[$key])) {
-            $env = $_ENV[$key];
-        } elseif (false === $env = \getenv($key)) {
-            // Default is not passed through filter!
-            return $default;
+        if (false !== $env = \getenv($key)) {
+            return static::prepareValue($env, $filter, $options);
         }
 
+        if (isset($_ENV[$key])) {
+            return static::prepareValue($_ENV[$key], $filter, $options);
+        }
+
+        if (isset($_SERVER[$key])) {
+            return static::prepareValue($_SERVER[$key], $filter, $options);
+        }
+
+        // Default is not passed through filter!
+        return $default;
+    }
+
+    protected static function prepareValue($env, $filter, $options)
+    {
         static $special = [
             'true' => true, 'false' => false, 'null' => null,
             'TRUE' => true, 'FALSE' => false, 'NULL' => null,

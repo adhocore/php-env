@@ -4,7 +4,7 @@ namespace Ahc\Env\Test;
 
 use Ahc\Env\Retriever;
 
-class RetrieverTest extends \PHPUnit_Framework_TestCase
+class RetrieverTest extends \PHPUnit\Framework\TestCase
 {
     public function testLoad()
     {

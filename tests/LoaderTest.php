@@ -4,7 +4,7 @@ namespace Ahc\Env\Test;
 
 use Ahc\Env\Loader;
 
-class LoaderTest extends \PHPUnit_Framework_TestCase
+class LoaderTest extends \PHPUnit\Framework\TestCase
 {
     public function testLoadPutenv()
     {
@@ -12,7 +12,7 @@ class LoaderTest extends \PHPUnit_Framework_TestCase
 
         $_SERVER['x'] = $_ENV['x'] = 'X';
 
-        $loader->load(__DIR__ . '/stubs/test.env', false, 0);
+        $loader->load(__DIR__ . '/stubs/test.env', false);
 
         $this->assertEquals('1', getenv('a'), 'Unquoted number');
         $this->assertEquals('2', getenv('b'), 'Quoted number');
