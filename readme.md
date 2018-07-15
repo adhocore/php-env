@@ -39,6 +39,8 @@ use Ahc\Env\Loader;
 (new Loader)->load('/project/root/.env', true, Loader::ALL);
 ```
 
+> Always wrap complex values within double quotes in `.env` file. Eg: `APP_KEY="K&^¢*&D(?<µ}^(P\]X"`
+
 ### Retrieving
 
 ```php
