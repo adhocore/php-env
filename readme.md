@@ -52,11 +52,14 @@ b="2"
 c=$3#
 ; also comment line
 d="lol"
+# empty
 e=
 f=\"6\"
 1_2=one_two
+# empty too
 E=""
 A_B=Apple Ball
+# multiline
 MUL="line 1
 line 2"
 x=Y
@@ -81,6 +84,10 @@ echo env('THE_KEY');
 ```
 
 See [filter_var](http://php.net/filter_var) for more on sanitizing/filtering values!
+
+## Benchmark
+
+If you are interested [here](https://github.com/adhocore/env-bench) is a simple benchmark.
 
 ---
 ### Consideration
