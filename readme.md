@@ -43,7 +43,7 @@ use Ahc\Env\Loader;
 
 ### ENV Format
 
-Supports `#` or `;` comments and multilines. Literal double quote should be escaped like `\"`. See more examples below:
+Supports `#` or `;` comments. Literal double quote should be escaped like `""`. See more examples below:
 
 ```
 # comment line
@@ -54,14 +54,12 @@ c=$3#
 d="lol"
 # empty
 e=
-f=\"6\"
+# f is `"6"`
+f=""6""
 1_2=one_two
 # empty too
 E=""
 A_B=Apple Ball
-# multiline
-MUL="line 1
-line 2"
 x=Y
 ```
 
