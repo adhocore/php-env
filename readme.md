@@ -63,6 +63,16 @@ A_B=Apple Ball
 x=Y
 ```
 
+Reference is possible like so:
+
+```
+MAIN=1
+REF=${MAIN}/2
+REF2=${REF}/3
+# below will not be parsed as INV is not resolved
+REF3=${INV}
+```
+
 ### Retrieving
 
 ```php
