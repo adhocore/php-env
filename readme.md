@@ -1,4 +1,11 @@
-## adhocore/env [![build status](https://travis-ci.org/adhocore/env.svg?branch=master)](https://travis-ci.org/adhocore/env)
+## adhocore/env
+
+[![Latest Version](https://img.shields.io/github/release/adhocore/env.svg?style=flat-square)](https://github.com/adhocore/env/releases)
+[![Travis Build](https://travis-ci.org/adhocore/env.svg?branch=master)](https://travis-ci.org/adhocore/env?branch=master)
+[![Scrutinizer CI](https://img.shields.io/scrutinizer/g/adhocore/env.svg?style=flat-square)](https://scrutinizer-ci.com/g/adhocore/env/?branch=master)
+[![Codecov branch](https://img.shields.io/codecov/c/github/adhocore/env/master.svg?style=flat-square)](https://codecov.io/gh/adhocore/env)
+[![StyleCI](https://styleci.io/repos/107715208/shield)](https://styleci.io/repos/107715208)
+[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
 
 - Environment variable loader and retriever for PHP.
 - Sanitization/Filters can be applied on retrieval if `filter` extension is loaded.
