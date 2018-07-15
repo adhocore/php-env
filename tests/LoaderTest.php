@@ -22,7 +22,6 @@ class LoaderTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals('"6"', getenv('f'), 'Escaped numeric string');
         $this->assertEquals('one_two', getenv('1_2'), 'Underscored string');
         $this->assertEquals('Apple Ball', getenv('A_B'), 'Multi word string');
-        $this->assertEquals("line 1\nline 2", getenv('MUL'), 'Multi line string');
 
         $this->assertFalse(getenv('MuL'), 'Key should be case sensitive');
 
@@ -47,7 +46,6 @@ class LoaderTest extends \PHPUnit\Framework\TestCase
             $this->assertEquals('"6"', $source['f'], 'Escaped numeric string');
             $this->assertEquals('one_two', $source['1_2'], 'Underscored string');
             $this->assertEquals('Apple Ball', $source['A_B'], 'Multi word string');
-            $this->assertEquals("line 1\nline 2", $source['MUL'], 'Multi line string');
 
             $this->assertArrayNotHasKey('mUl', $source, 'Key should be case sensitive');
         }
@@ -71,7 +69,6 @@ class LoaderTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals('o$3#', getenv('c'), 'Unquoted string new');
         $this->assertEquals('olol', getenv('d'), 'Quoted string new');
         $this->assertEquals('"o6"', getenv('f'), 'Escaped numeric string new');
-        $this->assertEquals("oline 1\nline 2", getenv('MUL'), 'Multi line string new');
 
         foreach (['SERVER', 'ENV'] as $name) {
             $source = $name === 'ENV' ? $_ENV : $_SERVER;
@@ -81,15 +78,22 @@ class LoaderTest extends \PHPUnit\Framework\TestCase
             $this->assertNotEquals('$3#', $source['c'], 'Unquoted string old');
             $this->assertNotEquals('lol', $source['d'], 'Quoted string old');
             $this->assertNotEquals('"6"', $source['f'], 'Escaped numeric string old');
-            $this->assertNotEquals("line 1\nline 2", $source['MUL'], 'Multi line string old');
 
             $this->assertEquals('o1', $source['a'], 'Unquoted number new');
             $this->assertEquals('o2', $source['b'], 'Quoted number new');
             $this->assertEquals('o$3#', $source['c'], 'Unquoted string new');
             $this->assertEquals('olol', $source['d'], 'Quoted string new');
             $this->assertEquals('"o6"', $source['f'], 'Escaped numeric string new');
-            $this->assertEquals("oline 1\nline 2", $source['MUL'], 'Multi line string new');
         }
+    }
+
+    public function testRef()
+    {
+        (new Loader)->load(__DIR__ . '/stubs/ref.env');
+
+        $this->assertSame('1/2', getenv('REF'));
+        $this->assertSame('1/2/3', getenv('REF2'));
+        $this->assertSame('${INV}', getenv('REF3'));
     }
 
     /**
