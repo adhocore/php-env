@@ -1,9 +1,9 @@
 ## adhocore/env
 
-[![Latest Version](https://img.shields.io/github/release/adhocore/env.svg?style=flat-square)](https://github.com/adhocore/env/releases)
+[![Latest Version](https://img.shields.io/github/release/adhocore/php-env.svg?style=flat-square)](https://github.com/adhocore/php-env/releases)
 [![Travis Build](https://travis-ci.org/adhocore/php-env.svg?branch=master)](https://travis-ci.org/adhocore/php-env?branch=master)
-[![Scrutinizer CI](https://img.shields.io/scrutinizer/g/adhocore/env.svg?style=flat-square)](https://scrutinizer-ci.com/g/adhocore/env/?branch=master)
-[![Codecov branch](https://img.shields.io/codecov/c/github/adhocore/env/master.svg?style=flat-square)](https://codecov.io/gh/adhocore/env)
+[![Scrutinizer CI](https://img.shields.io/scrutinizer/g/adhocore/php-env.svg?style=flat-square)](https://scrutinizer-ci.com/g/adhocore/php-env/?branch=master)
+[![Codecov branch](https://img.shields.io/codecov/c/github/adhocore/php-env/master.svg?style=flat-square)](https://codecov.io/gh/adhocore/php-env)
 [![StyleCI](https://styleci.io/repos/107715208/shield)](https://styleci.io/repos/107715208)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
 
