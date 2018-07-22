@@ -112,4 +112,5 @@ if (!getenv('<LAST_ENV_APP_SHOULD_BE_AWARE_OF>')) {
 }
 ```
 
-For example if your app last introduced `FB_APP_ID` env, but this value is not already hard set in the machine, it would be loaded via `.env` file else you are already covered.
+For example if your app last introduced `FB_APP_ID` env, but this value is not already hard set in the machine,
+it would be loaded via `.env` file else you are already covered.
