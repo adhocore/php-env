@@ -1,6 +1,14 @@
 <?php
 
-// @codeCoverageIgnoreStart
+/*
+ * This file is part of the PHP-ENV package.
+ *
+ * (c) Jitendra Adhikari <jiten.adhikary@gmail.com>
+ *     <https://github.com/adhocore>
+ *
+ * Licensed under MIT license.
+ */
+
 if (!function_exists('env')) {
     /**
      * Get the env variable by its key/name.
