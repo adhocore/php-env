@@ -86,23 +86,32 @@ class Loader
                 continue;
             }
 
-            $value = $this->resolveRef($value);
-
-            $this->toEnv($key, $value, $mode);
-            $this->toServer($key, $value, $mode);
-            $this->toPutenv($key, $value, $mode);
+            $this->set($key, $value, $mode);
         }
+
+        $this->resolveRefs($vars, $mode);
     }
 
-    protected function resolveRef($value)
+    protected function set($key, $value, $mode)
     {
-        if (!$value || \strpos($value, '${') === false) {
-            return $value;
-        }
+        $this->toEnv($key, $value, $mode);
+        $this->toServer($key, $value, $mode);
+        $this->toPutenv($key, $value, $mode);
+    }
 
-        return \preg_replace_callback('~\$\{(\w+)\}~', function ($m) {
-            return (null === $ref = Retriever::getEnv($m[1], null)) ? $m[0] : $ref;
-        }, $value);
+    protected function resolveRefs($vars, $mode)
+    {
+        foreach ($vars as $key => $value) {
+            if (!$value || \strpos($value, '${') === false) {
+                continue;
+            }
+
+            $value = \preg_replace_callback('~\$\{(\w+)\}~', function ($m) {
+                return (null === $ref = Retriever::getEnv($m[1], null)) ? $m[0] : $ref;
+            }, $value);
+
+            $this->set($key, $value, $mode);
+        }
     }
 
     private function toEnv($key, $value, $mode)
