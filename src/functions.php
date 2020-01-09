@@ -27,4 +27,3 @@ if (!function_exists('env')) {
         return \Ahc\Env\Retriever::getEnv($key, $default, $filter, $options);
     }
 }
-// @codeCoverageIgnoreEnd
