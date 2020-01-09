@@ -13,6 +13,8 @@ if (!function_exists('env')) {
     /**
      * Get the env variable by its key/name.
      *
+     * @codeCoverageIgnore
+     *
      * @param string    $key
      * @param mixed     $default
      * @param int|null  $filter  PHP's filter constants. See http://php.net/filter_var
