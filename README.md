@@ -6,7 +6,9 @@
 [![Codecov branch](https://img.shields.io/codecov/c/github/adhocore/php-env/master.svg?style=flat-square)](https://codecov.io/gh/adhocore/php-env)
 [![StyleCI](https://styleci.io/repos/107715208/shield)](https://styleci.io/repos/107715208)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
-[![Donate](https://img.shields.io/badge/donate-paypal-blue.svg?style=flat-square)](https://www.paypal.me/ji10/50usd)
+[![Donate 15](https://img.shields.io/badge/donate-paypal-blue.svg?style=flat-square&label=donate+15)](https://www.paypal.me/ji10/15usd)
+[![Donate 25](https://img.shields.io/badge/donate-paypal-blue.svg?style=flat-square&label=donate+25)](https://www.paypal.me/ji10/25usd)
+[![Donate 50](https://img.shields.io/badge/donate-paypal-blue.svg?style=flat-square&label=donate+50)](https://www.paypal.me/ji10/50usd)
 [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Fast+environment+variable+aka+env+loader+and+retriever+for+PHP&url=https://github.com/adhocore/php-env&hashtags=php,env-loader,env-parser)
 
 - Environment variable loader and retriever for PHP.
