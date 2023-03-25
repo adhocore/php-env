@@ -107,6 +107,7 @@ class LoaderTest extends \PHPUnit\Framework\TestCase
 
     /**
      * @expectedException \InvalidArgumentException
+     *
      * @expectedExceptionMessage The .env file does not exist or is not readable
      */
     public function testLoadInvalidPath()
@@ -118,6 +119,7 @@ class LoaderTest extends \PHPUnit\Framework\TestCase
 
     /**
      * @expectedException \RuntimeException
+     *
      * @expectedExceptionMessage The .env file cannot be parsed due to malformed values
      */
     public function testLoadInvalidData()
